@@ -2,11 +2,21 @@
 <html>
 <head>
 	<title>Sound Shapers</title>
-	<script src="howler.js"></script>
-	<script src="pedalboard.js"></script>
 </head>
 <body>
-	<h1>Test me loves.</h1>
+	<h1>Sign in, Loves.</h1>
+
+	<div id="login-form-container">
+		<ul class="login"><%= form_for "/" do |f| %>
+			<%=f.label :email %>
+			<%=f.text_field :email %>
+			<%=f.label :password %>
+			<%=f.password_field :password %>
+			<%=f.submit "Sign In" %>
+		</ul>
+		<%end%>
+	</div>
+
 
 </body>
 </html>

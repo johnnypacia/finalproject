@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   post '/' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/sounds' => 'sounds#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

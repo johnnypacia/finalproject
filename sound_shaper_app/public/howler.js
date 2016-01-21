@@ -1,4 +1,4 @@
-console.log('check off step one, lasses');
+console.log('Greetings from Howler-Library, TX');
 
 /*!
  *  howler.js v1.1.28
