@@ -1,4 +1,4 @@
-console.log('greetings from Sounds-View, TX!');
+console.log('Greetings from Sounds-View, TX!');
 
 var piano = new Howl({
   urls: ['piano1.m4a'],
@@ -22,6 +22,7 @@ var drums = new Howl({
 });
 
 var playButton = document.querySelector('#play-all');
+var pauseButton = document.querySelector('#pause-all');
 var stopButton = document.querySelector('#reset-all');
 var muteGuitarButton = document.querySelector('#mute-guitar');
 var mutePianoButton = document.querySelector('#mute-piano');
@@ -50,6 +51,13 @@ var playBack = function(){
 	drums.unmute();
 	drums.play();
 };
+
+var pausePlayBack = function (){
+	guitar.pause();
+	bass.pause();
+	piano.pause();
+	drums.pause();
+}
 
 var stopPlayBack = function(){
 	guitar.stop();
@@ -125,6 +133,7 @@ var fadeOutDrums = function(){
 
 playButton.addEventListener("click", playBack);
 stopButton.addEventListener("click", stopPlayBack);
+pauseButton.addEventListener("click", pausePlayBack);
 
 //Mute/Unmute on individual tracks
 muteBassButton.addEventListener("click", muteBass);
