@@ -84,6 +84,7 @@ var stopPlayBack = function(){
 
 var muteBass = function(){
 	bass.mute();
+	removeMuteListener();
 }
 
 var mutePiano = function(){
@@ -105,6 +106,7 @@ var muteDrums = function(){
 
 var unmuteBass = function(){
 	bass.unmute();
+	removeUnmuteListener();
 }
 
 var unmutePiano = function(){
@@ -157,7 +159,22 @@ stopButton.addEventListener("click", stopPlayBack);
 pauseButton.addEventListener("click", pausePlayBack);
 
 //Mute/Unmute on individual tracks
+
+
+var removeMuteListener = function () {
+	muteBassButton.removeEventListener('click',muteBass);
+	muteBassButton.addEventListener('click', unmuteBass);
+}
+
+
+var removeUnmuteListener = function () {
+	muteBassButton.removeEventListener('click',unmuteBass);
+	muteBassButton.addEventListener('click', muteBass);
+}
+
 muteBassButton.addEventListener("click", muteBass);
+
+
 mutePianoButton.addEventListener("click", mutePiano);
 muteGuitarButton.addEventListener("click", muteGuitar);
 muteDrumsButton.addEventListener("click", muteDrums);
