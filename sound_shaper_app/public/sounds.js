@@ -1,5 +1,16 @@
 console.log('Greetings from Sounds-View, TX!');
 
+var stage = new pb.Stage();
+var ctx = stage.getContext();
+var board = new pb.Board(ctx);
+    stage.setBoard(board);
+var overdrive = new pb.stomp.Overdrive(ctx);
+var reverb = new pb.stomp.Reverb(ctx);
+var volume = new pb.stomp.Volume(ctx);
+var delay = new pb.stomp.Delay(ctx);
+
+board.addPedals([overdrive, reverb]);
+
 var piano = new Howl({
   urls: ['piano1.m4a'],
   buffer: true
@@ -50,6 +61,11 @@ var playBack = function(){
 	piano.play();
 	drums.unmute();
 	drums.play();
+	stage.play('guitar.m4a');
+    overdrive.setDrive(0);
+	overdrive.setTone(0);
+	overdrive.setLevel(0);
+	volume.setLevel(1);
 };
 
 var pausePlayBack = function (){
@@ -75,6 +91,11 @@ var mutePiano = function(){
 }
 
 var muteGuitar = function(){
+	!overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
+	overdrive.setDrive(0);
+	overdrive.setTone(0);
+	overdrive.setLevel(0);
+	volume.setLevel(0);
 	guitar.mute();
 }
 
@@ -114,7 +135,7 @@ var fadeInDrums = function(){
 	drums.fadeIn(1, 10000);
 }
 var fadeOutBass = function(){
-	bass.fadeOut(0, 10000);
+	bass.fadeOut(0, 10000, fadeInBass);
 }
 
 var fadeOutPiano = function(){
