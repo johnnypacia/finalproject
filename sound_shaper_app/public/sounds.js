@@ -25,23 +25,23 @@ function play() {
 
 var piano = new Howl({
   urls: ['piano1.m4a'],
-  buffer: true
+  buffer: false
 });
 
 var guitar = new Howl({
   urls: ['guitar.m4a'],
-  buffer: true
+  buffer: false
 });
 
 var bass = new Howl({
   urls: ['bass.m4a'],
-  buffer: true
+  buffer: false
 });
 
 
 var drums = new Howl({
   urls: ['drums.m4a'],
-  buffer: true
+  buffer: false
 });
 
 
@@ -68,7 +68,7 @@ var playBack = function(){
 	piano.unmute();
 	piano.play();
 	drums.unmute();
-	drums.play();
+	// drums.play();
 	stage.play('guitar.m4a');
     overdrive.setDrive(0);
 	overdrive.setTone(0);
