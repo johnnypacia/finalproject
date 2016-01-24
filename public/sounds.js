@@ -68,7 +68,7 @@ var playBack = function(){
 	piano.unmute();
 	piano.play();
 	drums.unmute();
-	// drums.play();
+	drums.play();
 	stage.play('guitar.m4a');
     overdrive.setDrive(0);
 	overdrive.setTone(0);

@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   root 'sessions#new'
 
+  resources :users, only: [:create] 
+
+  get '/users/create' => 'users#new'
+  post '/users' => 'users#create'
+
   post '/' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/sounds' => 'sounds#index'
