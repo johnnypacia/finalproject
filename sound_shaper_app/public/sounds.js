@@ -1,15 +1,27 @@
-console.log('Greetings from Sounds-View, TX!');
+console.log('Greetings from Sounds-Script, TX!');
 
-var stage = new pb.Stage();
-var ctx = stage.getContext();
-var board = new pb.Board(ctx);
-    stage.setBoard(board);
-var overdrive = new pb.stomp.Overdrive(ctx);
-var reverb = new pb.stomp.Reverb(ctx);
-var volume = new pb.stomp.Volume(ctx);
-var delay = new pb.stomp.Delay(ctx);
+var impulseResponseBuffer = null;
+function loadImpulseResponse() {
+  loadBuffer('impulse.wav', function(buffer) {
+    impulseResponseBuffer = buffer;
+  });
+}
 
-board.addPedals([overdrive, reverb]);
+function play() {
+  // Make a source node for the sample.
+  var source = context.createBufferSource();
+  source.buffer = this.buffer;
+  // Make a convolver node for the impulse response.
+  var convolver = context.createConvolver();
+  // Set the impulse response buffer.
+  convolver.buffer = impulseResponseBuffer;
+  // Connect graph.
+  source.connect(convolver);
+  convolver.connect(context.destination);
+}
+
+
+// INDIVIDUAL TRACKS
 
 var piano = new Howl({
   urls: ['piano1.m4a'],
@@ -32,26 +44,22 @@ var drums = new Howl({
   buffer: true
 });
 
+
+//GLOBAL BUTTONS 
 var playButton = document.querySelector('#play-all');
 var pauseButton = document.querySelector('#pause-all');
 var stopButton = document.querySelector('#reset-all');
+var fadeOutButton = document.querySelector('#fade-out')
+//INDIVIDUAL TRACK BUTTONS
+
+
 var muteGuitarButton = document.querySelector('#mute-guitar');
 var mutePianoButton = document.querySelector('#mute-piano');
 var muteDrumsButton = document.querySelector('#mute-drums');
 var muteBassButton = document.querySelector('#mute-bass');
-var unmuteGuitarButton = document.querySelector('#unmute-guitar');
-var unmutePianoButton = document.querySelector('#unmute-piano');
-var unmuteDrumsButton = document.querySelector('#unmute-drums');
-var unmuteBassButton = document.querySelector('#unmute-bass');
-var fadeInGuitarButton = document.querySelector('#fade-in-guitar');
-var fadeInPianoButton = document.querySelector('#fade-in-piano');
-var fadeInDrumsButton = document.querySelector('#fade-in-drums');
-var fadeInBassButton = document.querySelector('#fade-in-bass');
-var fadeOutGuitarButton = document.querySelector('#fade-out-guitar');
-var fadeOutPianoButton = document.querySelector('#fade-out-piano');
-var fadeOutDrumsButton = document.querySelector('#fade-out-drums');
-var fadeOutBassButton = document.querySelector('#fade-out-bass');
 
+
+// GLOBAL CONTROLS 
 var playBack = function(){
 	guitar.unmute();
 	guitar.play();
@@ -73,7 +81,7 @@ var pausePlayBack = function (){
 	bass.pause();
 	piano.pause();
 	drums.pause();
-}
+};
 
 var stopPlayBack = function(){
 	guitar.stop();
@@ -82,14 +90,21 @@ var stopPlayBack = function(){
 	drums.stop();
 };
 
-var muteBass = function(){
-	bass.mute();
-	removeMuteListener();
-}
+var fadeOut = function (){
+	guitar.fadeOut(0, 5000, stopPlayBack);
+	bass.fadeOut(0, 5000, stopPlayBack);
+	piano.fadeOut(0, 5000, stopPlayBack);
+	drums.fadeOut(0, 5000, stopPlayBack);
+};
 
-var mutePiano = function(){
-	piano.mute();
-}
+playButton.addEventListener("click", playBack);
+stopButton.addEventListener("click", stopPlayBack);
+pauseButton.addEventListener("click", pausePlayBack);
+fadeOutButton.addEventListener("click", fadeOut);
+
+
+// GUITAR CONTROLS 
+	// mute & unmute
 
 var muteGuitar = function(){
 	!overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
@@ -98,76 +113,96 @@ var muteGuitar = function(){
 	overdrive.setLevel(0);
 	volume.setLevel(0);
 	guitar.mute();
-}
-
-var muteDrums = function(){
-	drums.mute();
-}
-
-var unmuteBass = function(){
-	bass.unmute();
-	removeUnmuteListener();
-}
-
-var unmutePiano = function(){
-	piano.unmute();
+	removeMuteGuitarListener();
 }
 
 var unmuteGuitar = function(){
 	guitar.unmute();
+	removeUnmuteGuitarListener();
+
+}
+
+var removeMuteGuitarListener = function () {
+	muteGuitarButton.removeEventListener('click',muteGuitar);
+	muteGuitarButton.addEventListener('click', unmuteGuitar);
+}
+
+var removeUnmuteGuitarListener = function () {
+	muteGuitarButton.removeEventListener('click',unmuteGuitar);
+	muteGuitarButton.addEventListener('click', muteGuitar);
+}
+
+muteGuitarButton.addEventListener("click", muteGuitar);
+
+// PIANO CONTROLS
+	// mute & unmute
+
+var mutePiano = function(){
+	piano.mute();
+	removeMutePianoListener();
+}
+
+var unmutePiano = function(){
+	piano.unmute();
+	removeUnmutePianoListener();
+}
+
+var removeMutePianoListener = function () {
+	mutePianoButton.removeEventListener('click',mutePiano);
+	mutePianoButton.addEventListener('click', unmutePiano);
+}
+
+var removeUnmutePianoListener = function () {
+	mutePianoButton.removeEventListener('click',unmutePiano);
+	mutePianoButton.addEventListener('click', mutePiano);
+}
+
+mutePianoButton.addEventListener("click", mutePiano);
+
+// DRUM CONTROLS 
+	// mute & unmute
+
+var muteDrums = function(){
+	drums.mute();
+	removeMuteDrumsListener();
 }
 
 var unmuteDrums = function(){
 	drums.unmute();
+	removeUnmuteDrumsListener();
 }
 
-var fadeInBass = function(){
-	bass.fadeIn(1, 10000);
+var removeMuteDrumsListener = function () {
+	muteDrumsButton.removeEventListener('click',muteDrums);
+	muteDrumsButton.addEventListener('click', unmuteDrums);
 }
 
-var fadeInPiano = function(){
-	piano.fadeIn(1, 10000);
+var removeUnmuteDrumsListener = function () {
+	muteDrumsButton.removeEventListener('click',unmuteDrums);
+	muteDrumsButton.addEventListener('click', muteDrums);
 }
 
-var fadeInGuitar = function(){
-	guitar.fadeIn(1, 10000);
+muteDrumsButton.addEventListener("click", muteDrums);
+
+// BASS CONTROLS  
+	//mute & unmute
+
+var muteBass = function(){
+	bass.mute();
+	removeMuteBassListener();
 }
 
-var fadeInDrums = function(){
-	drums.fadeIn(1, 10000);
-}
-var fadeOutBass = function(){
-	bass.fadeOut(0, 10000, fadeInBass);
+var unmuteBass = function(){
+	bass.unmute();
+	removeUnmuteBassListener();
 }
 
-var fadeOutPiano = function(){
-	piano.fadeOut(0, 10000);
-}
-
-var fadeOutGuitar = function(){
-	guitar.fadeOut(0, 10000);
-}
-
-var fadeOutDrums = function(){
-	drums.fadeOut(0, 10000);
-}
-
-//Play/Stop global functionality
-
-playButton.addEventListener("click", playBack);
-stopButton.addEventListener("click", stopPlayBack);
-pauseButton.addEventListener("click", pausePlayBack);
-
-//Mute/Unmute on individual tracks
-
-
-var removeMuteListener = function () {
+var removeMuteBassListener = function () {
 	muteBassButton.removeEventListener('click',muteBass);
 	muteBassButton.addEventListener('click', unmuteBass);
 }
 
-
-var removeUnmuteListener = function () {
+var removeUnmuteBassListener = function () {
 	muteBassButton.removeEventListener('click',unmuteBass);
 	muteBassButton.addEventListener('click', muteBass);
 }
@@ -175,22 +210,72 @@ var removeUnmuteListener = function () {
 muteBassButton.addEventListener("click", muteBass);
 
 
-mutePianoButton.addEventListener("click", mutePiano);
-muteGuitarButton.addEventListener("click", muteGuitar);
-muteDrumsButton.addEventListener("click", muteDrums);
-unmuteBassButton.addEventListener("click", unmuteBass);
-unmutePianoButton.addEventListener("click", unmutePiano);
-unmuteGuitarButton.addEventListener("click", unmuteGuitar);
-unmuteDrumsButton.addEventListener("click", unmuteDrums);
+	// BASS fade in & fade out
+
+// var fadeOutBass = function(){
+// 	bass.fadeOut(0, 15000, muteBass);
+// 	removeFadeOutBassListener();
+// }
+
+// var fadeInBass = function(){
+// 	bass.fadeIn(1, 1000);
+// 	removeFadeInBassListener();
+
+// }
+
+// var removeFadeOutBassListener = function () {
+// 	fadeOutBassButton.removeEventListener('click',fadeOutBass);
+// 	fadeOutBassButton.addEventListener('click', fadeInBass);
+// }
+
+// var removeFadeInBassListener = function () {
+// 	fadeOutBassButton.removeEventListener('click',fadeInBass);
+// 	fadeOutBassButton.addEventListener('click', fadeOutBass);
+// }
+
+// fadeOutBassButton.addEventListener("click", fadeOutBass);
+
+// fadeInBassButton.addEventListener("click", fadeInBass);
+
+
+// var fadeInPiano = function(){
+// 	piano.fadeIn(1, 10000);
+// }
+
+// var fadeInGuitar = function(){
+// 	guitar.fadeIn(1, 10000);
+// }
+
+// var fadeInDrums = function(){
+// 	drums.fadeIn(1, 10000);
+// }
+
+
+// var fadeOutPiano = function(){
+// 	piano.fadeOut(0, 10000);
+// }
+
+// var fadeOutGuitar = function(){
+// 	guitar.fadeOut(0, 10000);
+// }
+
+// var fadeOutDrums = function(){
+// 	drums.fadeOut(0, 10000);
+// }
+
+
+
+// unmuteBassButton.addEventListener("click", unmuteBass);
+// unmutePianoButton.addEventListener("click", unmutePiano);
+// unmuteGuitarButton.addEventListener("click", unmuteGuitar);
+// unmuteDrumsButton.addEventListener("click", unmuteDrums);
 
 //FadeIn/FadeOut on individual tracks
-fadeInGuitarButton.addEventListener("click", fadeInGuitar);
-fadeInBassButton.addEventListener("click", fadeInBass);
-fadeInPianoButton.addEventListener("click", fadeInPiano);
-fadeInDrumsButton.addEventListener("click", fadeInDrums);
-fadeOutGuitarButton.addEventListener("click", fadeOutGuitar);
-fadeOutBassButton.addEventListener("click", fadeOutBass);
-fadeOutPianoButton.addEventListener("click", fadeOutPiano);
-fadeOutDrumsButton.addEventListener("click", fadeOutDrums);
+// fadeInGuitarButton.addEventListener("click", fadeInGuitar);
+// fadeInPianoButton.addEventListener("click", fadeInPiano);
+// fadeInDrumsButton.addEventListener("click", fadeInDrums);
+// fadeOutGuitarButton.addEventListener("click", fadeOutGuitar);
+// fadeOutPianoButton.addEventListener("click", fadeOutPiano);
+// fadeOutDrumsButton.addEventListener("click", fadeOutDrums);
 
 
