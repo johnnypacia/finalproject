@@ -4,19 +4,20 @@
 	<title>Sound Shapers</title>
 </head>
 <body>
-	<h1>Sign in, Loves.</h1>
-
-	<div id="login-form-container">
-		<ul class="login"><%= form_for "/" do |f| %>
-			<%=f.label :email %>
-			<%=f.text_field :email %>
-			<%=f.label :password %>
-			<%=f.password_field :password %>
-			<%=f.submit "Sign In" %>
-		</ul>
-		<%end%>
+	<div id="welcome-wagon">
+		<h1>Sign in, Loves.</h1>
+		<div id="login-form-container">
+			<ul class="login"><%= form_for "/" do |f| %>
+				<li><%=f.label :email %></li>
+				<li><%=f.text_field :email, class: "grid-2-8" %></li>
+				<li><%=f.label :password %></li>
+				<li><%=f.password_field :password, class: "grid-2-8" %></li>
+				<li><%=f.submit "Sign In", class: "login-button grid-2-8" %></li>
+			</ul>
+			<%end%>
+		<h2>OR</h2>
+			<%= link_to 'Sign Up', users_create_path %>
+		</div>
 	</div>
-
-	<%= link_to 'Sign Up', users_create_path %>
 </body>
 </html>
