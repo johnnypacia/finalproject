@@ -7,12 +7,12 @@
 	<div id="welcome-wagon">
 		<h1>Sign in, Loves.</h1>
 		<div id="login-form-container">
-			<ul class="login"><%= form_for "/" do |f| %>
+			<ul class="login grid-6-8"><%= form_for "/" do |f| %>
 				<li><%=f.label :email %></li>
-				<li><%=f.text_field :email, class: "grid-2-8" %></li>
+				<li><%=f.text_field :email, class: "grid-3-8" %></li>
 				<li><%=f.label :password %></li>
-				<li><%=f.password_field :password, class: "grid-2-8" %></li>
-				<li><%=f.submit "Sign In", class: "login-button grid-2-8" %></li>
+				<li><%=f.password_field :password, class: "grid-3-8" %></li>
+				<li><%=f.submit "Sign In", class: "login-button grid-3-8" %></li>
 			</ul>
 			<%end%>
 		<h2>OR</h2>

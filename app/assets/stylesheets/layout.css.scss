@@ -1,5 +1,11 @@
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
+$container-color: #B20000;
+@mixin rounded-edges($radius){
+	border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+}
 
 html{
   background-image: url("https://pixabay.com/static/uploads/photo/2015/11/09/16/47/background-1035489_960_720.jpg");
@@ -15,9 +21,9 @@ body {
 }
 
 #welcome-wagon {
-	border: dotted;
+	border: solid 4px darken($container-color, 10%);
 	width: 80%;
-	background-color: red;
+	background-color: $container-color;
     position:absolute;
     left:50%;
     top:50%;
@@ -25,16 +31,14 @@ body {
     height:300px;
 
     margin-left:-150px; /* -1/2 width */
-    margin-top:-150px; 
+    margin-top:-150px;
+    @include rounded-edges(40px); 
 	
 }
 
 .login {
 	list-style-type: none;
-    width: 100%;
-    height: 100%;
-    margin-left: 50%;
-    margin-right: 50%;
-    margin-bottom: 30px;
-    padding: 10px;
+   
+    @include rounded-edges(10px);
+
 }
