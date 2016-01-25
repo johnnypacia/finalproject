@@ -8,8 +8,8 @@ class SessionsController <ApplicationController
 
 	#/
 	def create
-		user = User.find_by({email: params['/'][:email]})
-		if user && user.authenticate(params['/'][:password])
+		user = User.find_by({email: params[:email]})
+		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
 			flash[:notice] ="That's the right on, Man."
 			redirect_to sounds_path(@sounds)

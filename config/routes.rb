@@ -4,9 +4,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create] 
 
+  # signing up
   get '/users/create' => 'users#new'
   post '/users' => 'users#create'
 
+  # logging in
   post '/' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/sounds' => 'sounds#index'
