@@ -1,44 +1,58 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url(https://fonts.googleapis.com/css?family=Sonsie+One);
+
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
-$container-color: #B20000;
+$container-color: #FF5939;
 @mixin rounded-edges($radius){
 	border-radius: $radius;
 	-moz-border-radius: $radius;
 	-webkit-border-radius: $radius;
 }
 
+#banner {
+  font-family: 'Sonsie One', cursive;
+  font-size: 25px;
+  width: 100%;
+  margin-top: 30px;
+  color: #FFF0B4;
+  text-shadow: -1px 0 $primary-color, 0 1px $primary-color, 1px 0 $primary-color, 0 -1px $primary-color;
+
+}
+
 html{
   background-image: url("https://pixabay.com/static/uploads/photo/2015/11/09/16/47/background-1035489_960_720.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #wrapper {
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
   width: 960px;
 }
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
-  background-color: orange;
   text-align: center;
+  font-family: 'Poiret One', cursive;
 
 }
 
 #welcome-wagon {
-	border: solid 4px darken($container-color, 10%);
+	border: solid 4px black;
 	width: 80%;
 	background-color: $container-color;
-    position: absolute;
-    left:50%;
-    top:50%;
-    width:300px;
-    height:300px;
+  position: absolute;
+  left:50%;
+  top:50%;
+  width:330px;
+  height:350px;
 
-    margin-left:-150px; /* -1/2 width */
-    margin-top:-150px;
-    @include rounded-edges(40px); 
+  margin-left:-160px; 
+  margin-top:-110px;
+  @include rounded-edges(40px); 
 	
 }
 
@@ -47,4 +61,22 @@ body {
    
     @include rounded-edges(10px);
 
+}
+
+.btn {
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  text-shadow: 1px 1px 3px #666666;
+  font-family: 'Poiret One', cursive;;
+  color: #1a1a14;
+  font-size: 16px;
+  background: #e8a7a7;
+  padding: 7px 9px 6px 10px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #fca63c;
+  text-decoration: none;
 }

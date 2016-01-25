@@ -1,7 +1,9 @@
-<div class ="banner">
-	<h1>Sign up For Sound Shaping Today!</h1>
+<div id="banner">
+		<h1>Sound Shaper</h1>
 </div>
+
 <div id="welcome-wagon">
+	<h4>Sign up For Sound Shaping</h4>
 	<ul class="login grid-6-8">
 		<%= form_for @user, :url => users_path do |f|%>
 			<li><%=f.label :first_name%></li>
@@ -14,9 +16,8 @@
 			<li><%=f.password_field :password%></li>
 			<li><%=f.label :password_confirmation%></li>
 			<li><%=f.password_field :password_confirmation%></li>
-			<li><%=f.submit "Submit"%></li>
+			<p><%=f.submit "Submit", :class => 'btn' %></p>
 		<%end%>
 	</ul>
+	<a href="/"> Back to Sign In</a>
 </div>
-
-<a href="/"> Back to Sign In</a>

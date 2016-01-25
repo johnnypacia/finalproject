@@ -5,6 +5,10 @@
 </head>
 <body>
 	<div id="wrapper">
+
+	<div id="banner">
+		<h1>Sound Shaper</h1>
+	</div>
 		<div id="welcome-wagon">
 			<h1>Sign in, Loves.</h1>
 			<div id="login-form-container">
@@ -13,11 +17,11 @@
 					<li><%= text_field_tag :email, nil, class: "grid-3-8" %></li>
 					<li><%= label_tag :password %></li>
 					<li><%= password_field_tag :password, nil, class: "grid-3-8" %></li>
-					<li><%= submit_tag "Sign In", class: "login-button grid-3-8" %></li>
+					<p><%= submit_tag "Sign In", class: "btn grid-3-8" %></p>
 				</ul>
 				<%end%>
-			<h2>OR</h2>
-				<%= link_to 'Sign Up', users_create_path %>
+			<h3>or</h3>
+				<button class="btn"><%= link_to 'Sign Up', users_create_path %></button>
 			</div>
 		</div>
 	</div>

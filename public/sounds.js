@@ -1,24 +1,24 @@
 console.log('Greetings from Sounds-Script, TX!');
 
-var impulseResponseBuffer = null;
-function loadImpulseResponse() {
-  loadBuffer('impulse.wav', function(buffer) {
-    impulseResponseBuffer = buffer;
-  });
-}
+// var impulseResponseBuffer = null;
+// function loadImpulseResponse() {
+//   loadBuffer('impulse.wav', function(buffer) {
+//     impulseResponseBuffer = buffer;
+//   });
+// }
 
-function play() {
-  // Make a source node for the sample.
-  var source = context.createBufferSource();
-  source.buffer = this.buffer;
-  // Make a convolver node for the impulse response.
-  var convolver = context.createConvolver();
-  // Set the impulse response buffer.
-  convolver.buffer = impulseResponseBuffer;
-  // Connect graph.
-  source.connect(convolver);
-  convolver.connect(context.destination);
-}
+// function play() {
+//   // Make a source node for the sample.
+//   var source = context.createBufferSource();
+//   source.buffer = this.buffer;
+//   // Make a convolver node for the impulse response.
+//   var convolver = context.createConvolver();
+//   // Set the impulse response buffer.
+//   convolver.buffer = impulseResponseBuffer;
+//   // Connect graph.
+//   source.connect(convolver);
+//   convolver.connect(context.destination);
+// }
 
 
 // INDIVIDUAL TRACKS
@@ -107,11 +107,11 @@ fadeOutButton.addEventListener("click", fadeOut);
 	// mute & unmute
 
 var muteGuitar = function(){
-	!overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
-	overdrive.setDrive(0);
-	overdrive.setTone(0);
-	overdrive.setLevel(0);
-	volume.setLevel(0);
+	// !overdrive.bypassSwitch.getState() && overdrive.bypassSwitch.toggle();
+	// overdrive.setDrive(0);
+	// overdrive.setTone(0);
+	// overdrive.setLevel(0);
+	// volume.setLevel(0);
 	guitar.mute();
 	removeMuteGuitarListener();
 }
