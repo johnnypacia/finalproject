@@ -7,8 +7,11 @@
 	<script src="/dancer/dancer.js"></script>
 </head>
 <body>
-	<button><%= link_to "Log Out", logout_path %></button>
-	<h1>Shape me, loves.</h1>
+
+	<div id="banner">
+		<h1>Sound Shaper</h1>
+	</div>
+	<h2>Shape me, loves.</h2>
 	<div id="sounds-container">
 		<div id="global-buttons">
 			<button id="play-all">Play All Tracks</button>
@@ -28,9 +31,7 @@
 		</div>
 	</div>
 
-	<div id="visions">
-	
-	</div>
+	<p><%= link_to "Log Out", logout_path, class: "btn grid-3-8" %><p>
 	
 	<script src="sounds.js"></script>
 	<script src="effects.js"></script>
