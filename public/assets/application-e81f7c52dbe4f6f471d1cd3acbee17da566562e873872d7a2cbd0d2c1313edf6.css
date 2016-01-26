@@ -1,0 +1,122 @@
+.wrapper {
+	display: flex;
+
+}
+
+.grid-full {
+	width: 100%;
+}
+
+.grid-1-8 {
+  width: 12.5%;
+}
+.grid-2-8 {
+  width: 25%;
+}
+.grid-3-8 {
+  width: 37.5%;
+}
+.grid-4-8 {
+  width: 50%;
+}
+.grid-5-8 {
+  width: 62.5%;
+}
+.grid-6-8 {
+  width: 75%;
+}
+.grid-7-8 {
+  width: 87.5%;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+
+
+ */
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url(https://fonts.googleapis.com/css?family=Sonsie+One);
+/* line 13, /Users/johnnypacia/code/wdi/sound_shaper_app/app/assets/stylesheets/layout.css.scss */
+#banner {
+  font-family: 'Sonsie One', cursive;
+  font-size: 25px;
+  width: 100%;
+  margin-top: 30px;
+  color: #FFF0B4;
+  text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 -1px #333;
+}
+
+/* line 23, /Users/johnnypacia/code/wdi/sound_shaper_app/app/assets/stylesheets/layout.css.scss */
+html {
+  background-image: url("https://pixabay.com/static/uploads/photo/2015/11/09/16/47/background-1035489_960_720.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* line 29, /Users/johnnypacia/code/wdi/sound_shaper_app/app/assets/stylesheets/layout.css.scss */
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+/* line 35, /Users/johnnypacia/code/wdi/sound_shaper_app/app/assets/stylesheets/layout.css.scss */
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+  text-align: center;
+  font-family: 'Poiret One', cursive;
+}
+
+/* line 43, /Users/johnnypacia/code/wdi/sound_shaper_app/app/assets/stylesheets/layout.css.scss */
+#welcome-wagon {
+  border: solid 4px black;
+  width: 80%;
+  background-color: #FF5939;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 330px;
+  height: 350px;
+  margin-left: -160px;
+  margin-top: -110px;
+  border-radius: 40px;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+}
+
+/* line 59, /Users/johnnypacia/code/wdi/sound_shaper_app/app/assets/stylesheets/layout.css.scss */
+.login {
+  list-style-type: none;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+/* line 66, /Users/johnnypacia/code/wdi/sound_shaper_app/app/assets/stylesheets/layout.css.scss */
+.btn {
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  text-shadow: 1px 1px 3px #666666;
+  font-family: 'Poiret One', cursive;
+  color: #1a1a14;
+  font-size: 16px;
+  background: #e8a7a7;
+  padding: 7px 9px 6px 10px;
+  text-decoration: none;
+}
+
+/* line 79, /Users/johnnypacia/code/wdi/sound_shaper_app/app/assets/stylesheets/layout.css.scss */
+.btn:hover {
+  background: #fca63c;
+  text-decoration: none;
+}
