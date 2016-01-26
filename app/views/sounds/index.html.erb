@@ -11,30 +11,28 @@
 	<div id="banner">
 		<h1>Sound Shaper</h1>
 	</div>
-	<h2>Shape me, loves.</h2>
+	
 	<div id="sounds-container">
-		<div id="global-buttons">
-			<button id="play-all">Play All Tracks</button>
-			<button id="pause-all">Pause All Tracks</button>
-			<button id="reset-all">Reset All Tracks</button>
-			<button id="fade-out">Fade Out</button>
+		<div id="global-controls">
+			<button id="play-all" class="control-btn">Play All</button>
+			<button id="pause-all" class="control-btn">Pause All</button>
+			<button id="reset-all" class="control-btn">Reset All</button>
+			<button id="fade-out" class="control-btn">Fade Out</button>
 		</div>
 		<div id="mute-buttons">
-			<button id="mute-guitar">Mute Guitar</button>
-			<button id="mute-piano">Mute Piano</button>
-			<button id="mute-drums">Mute Drums</button>
-			<button id="mute-bass">Mute Bass</button>
+			<button id="mute-guitar" class="sound-btn">Mute Guitar</button>
+			<button id="mute-piano" class="sound-btn">Mute Piano</button>
+			<button id="mute-drums" class="sound-btn">Mute Drums</button>
+			<button id="mute-bass" class="sound-btn">Mute Bass</button>
 		</div>
 		<div id="effects">
-			<button id="overdrive-guitar">Overdrive Guitar</button>
-			
+			<button id="overdrive-guitar" class="overdrive">Overdrive</button>	
 		</div>
+		<p><%= link_to "Log Out", logout_path, class: "btn grid-3-8" %><p>
 	</div>
 
-	<p><%= link_to "Log Out", logout_path, class: "btn grid-3-8" %><p>
 	
 	<script src="sounds.js"></script>
 	<script src="effects.js"></script>
-	<script src="visualizations.js"></script>
 </body>
 </html>
