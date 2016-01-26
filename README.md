@@ -18,7 +18,7 @@ This application allows user to sign up with an e-mail and password, and sign in
 - RuboCop
 
 
-##Link to Site##
+##Deployment Link##
 
 - [Sound Shaper](https://nameless-bayou-39478.herokuapp.com/)
 
