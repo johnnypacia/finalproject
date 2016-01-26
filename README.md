@@ -13,8 +13,8 @@ This application allows user to sign up with an e-mail and password, and sign in
 - Sass/CSS
 - JavaScript
 - Heroku
-- Howler.js Click [here] (http://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)
-- Pedalboard.js Click [here] (https://dashersw.github.io/pedalboard.js/)
+- [Howler.js] (http://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)
+- [Pedalboard.js] (https://dashersw.github.io/pedalboard.js/)
 - RuboCop
 
 
