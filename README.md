@@ -1,8 +1,29 @@
-# finalproject
-johnny's final project!
+#Sound Shaper#
 
-Very soon this will be a paragraph description of what I want my project to be, and what technologies I plan to use. 
+##Description##
+Sound Shaper is an app that allows you to mix uploaded audio tracks to a song by isolating individual tracks, adding overdrive, and fade-outs. With proper manipulations of the buttons it also allows you to create delay and tremelo effects on the individual tracks. 
 
-AudioPhile Song Editor: This app will allow users to upload sound files, manipulate them using Web Audio API audio effects filters and save them to the database. It will use a Ruby on Rails framework to persist the song data. 
+##User Stories##
+This application allows user to sign up with an e-mail and password, and sign in to access the features of the app. Once The user signs in they will be able to play a song with four individual tracks: guitar, piano, drums, and bass. By pressing the labeled buttons on the page they will be able to shape the sound by muting individual tracks and adding overdrive to the guitar. Users can also play, pause and fade out all tracks.  
 
-Hear a song? See the lyrics: This app listens to a segment of overhead music and by using the echoprint music-fingerprinting API. When the song/artist is identified the user will be able to see the lyrics to the song they are currently using the Lyric Wiki API. If the user likes the lyrics, they can save them to their database. This would be an express SPA. 
+
+##Technology##
+- Ruby on Rails
+- HTML
+- Sass/CSS
+- JavaScript
+- Heroku
+- Howler.js Click [here] (http://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)
+- Pedalboard.js Click [here] (https://dashersw.github.io/pedalboard.js/)
+- RuboCop
+
+
+##Link to Site##
+
+Click [here](https://nameless-bayou-39478.herokuapp.com/sounds) To See The Sonuds Shaper
+
+
+##Wireframes##
+<img src="wireframes/SignIn.png"/>
+<img src="wireframes/SignUp.png"/>
+<img src="wireframes/SoundsShapingPage.png"/>
