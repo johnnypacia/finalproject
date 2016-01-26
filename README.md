@@ -20,7 +20,7 @@ This application allows user to sign up with an e-mail and password, and sign in
 
 ##Link to Site##
 
-- [Sound Shaper](https://nameless-bayou-39478.herokuapp.com/sounds)
+- [Sound Shaper](https://nameless-bayou-39478.herokuapp.com/)
 
 
 ##Wireframes##
