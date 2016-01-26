@@ -25,5 +25,5 @@ Click [here](https://nameless-bayou-39478.herokuapp.com/sounds) To See The Sonud
 
 ##Wireframes##
 <img src="wireframes/SignIn.png"/>
-<img src="wireframes/SignUp.png"/>
-<img src="wireframes/SoundsShapingPage.png"/>
+<img src="wireframes/SingUp.png"/>
+<img src="wireframes/SoundShapingPage.png"/>
